@@ -1,0 +1,21 @@
+# Bootstrap
+app/bootstrap*
+
+# Symfony directories
+vendor/*
+*/logs/*
+*/cache/*
+web/uploads/*
+web/bundles/*
+
+# Configuration files
+app/config/parameters.ini
+
+
+
+# eclipse and netbeans PDT files
+.buildpath
+.project
+.settings
+nbproject/
+
