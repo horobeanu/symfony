@@ -1,0 +1,20 @@
+{% extends "webCSAdminBundle::layout.html.twig" %}
+
+{% block content %}
+<h2>Cms creation</h2>
+
+<form action="{{ path('cms_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('cms') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

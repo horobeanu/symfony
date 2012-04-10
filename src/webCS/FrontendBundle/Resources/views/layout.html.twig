@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{% block title %}webCS{% endblock %}</title>
+
+<meta name="Abstract" content="webCS" />
+<meta name="reply-to" content="contact@webCS.ro" />
+<meta name="Author" content="www.innobyte.com"/>
+<meta name="Owner" content="webCS" />
+<meta name="Copyright" content="webCS" />
+<meta name="Publisher" content="webCS" />
+<meta name="Placename" content="Bucuresti, Romania" />
+<meta name="document-classification" content="website" />
+<meta name="document-rights" content="Copyrighted Work" />
+<meta name="document-type" content="Web Page" />
+<meta name="document-rating" content="webCS" />
+<meta name="document-distribution" content="webCS" />
+
+<link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon" />
+<link type="text/css" href="{{ asset('/frontend/css/style.css') }}" rel="stylesheet" media="all" />
+{% block stylesheets %}{% endblock %}
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{asset('/frontend/js/frontend.js')}}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.sendToFriend').click(function(){
+        $(this).siblings('#send-to-friend-list').show();
+    });
+	$('#send-to-friend-list').mouseleave(function(){
+        $(this).hide();
+    });
+    
+	$('#send-to-friend-list li').mouseenter(function(){
+        $(this).addClass('hover');
+    });
+	$('#send-to-friend-list li').mouseleave(function(){
+        $(this).removeClass('hover');
+    });
+    
+    
+    
+});
+</script>
+</head>
+
+<body id="{{ browserVersion() }}" class="{% block bodyClass %}{% endblock bodyClass %}">
+    <div class="wrapper">
+
+        <div id="header">
+            <h1 id="logo">
+                    <a href="{{ path('homepage') }}">webCS</a>
+            </h1>
+
+            <h2 id="head-title">
+                    <span class="orange">Developing World</span> Symfony2 Start Theme
+            </h2>
+
+            <form id="head-search" action="">
+                <p>
+                    <input type="text" name="search" class="text-input" value="Search..." onclick="if(this.value=='Search...')this.value='';" onblur="if(this.value=='')this.value='Search...';"/>
+                    <input type="submit" class="submit" value=" "/>
+                </p>
+            </form>
+
+            <div id="head-links">
+                <a href="javascript://" onclick="window.print();">Print this page</a> - <a href="javascript://" class="sendToFriend">Send to a friend</a>
+                <ul id="send-to-friend-list">
+                    <li id="share-facebook"><a href="http://www.facebook.com/sharer.php?u={{ app.request.getUri }}" target="_blank">Facebook</a></li>
+                    <li id="share-twitter"><a href="http://twitter.com/home?status={{ app.request.getUri }}via @_TWITTER_NAME" target="_blank">Twitter</a></li>
+                    <li id="share-yahoo"><a href="ymsgr:im?+&amp;msg={{ app.request.getUri }}" target="_blank">Yahoo! Messenger</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+
+            {{ knp_menu_render('webCSFrontendBundle:Builder:mainMenu', {'template': 'webCSFrontendBundle::menu.html.twig'}) }}
+
+        </div>
+
+    </div>
+
+    <div id="body">
+
+        {% block content %}
+        {% endblock content %}
+
+    </div>
+
+    <div id="footer">
+            Copyright 2012 webCS - <a href="#">Disclaimer</a>
+    </div>	
+
+    {% block javascripts %}{% endblock %}
+
+    <script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>

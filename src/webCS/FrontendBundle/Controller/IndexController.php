@@ -15,13 +15,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class IndexController extends Controller
 {
     /**
-     * Admin dashboard.
+     * Home page.
      *
      * @Route("/", name="homepage")
      * @Template()
      */
     public function indexAction()
-    {
-        return $this->render('webCSFrontendBundle:Index:index.html.twig');
+    {   
+        return $this->render('webCSFrontendBundle:Index:index.html.twig', array(
+            'geo' => @geoip_record_by_name(@$_SERVER['REMOTE_ADDR']),
+        ));
     }
 }

@@ -1,0 +1,22 @@
+{% extends "webCSFrontendBundle::layout.html.twig" %}
+
+{% block bodyClass %}static{% endblock%}
+{% block title %}{{pageTitle}} - IFPMA{% endblock %}
+
+{% block content %}
+
+<div class="wrapper">
+	<div id="content">
+		
+		<p class="page-title">{{pageTitle}}</p>
+		
+		<div id="page-content">
+			{{cms|raw}}
+		</div>
+		
+	</div>
+</div>
+
+
+</div>
+{% endblock %}

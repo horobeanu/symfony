@@ -43,7 +43,7 @@
 					<a href="#" class="nav-top-item current"> <!-- Add the class "current" to current menu item -->
 					Dashboards
 					</a>
-                                        {#{ knp_menu_render('webCSAdminBundle:Builder:mainMenu', {'template': 'webCSAdminBundle::knp_menu.html.twig'}) }#}
+                                        {{ knp_menu_render('webCSAdminBundle:Builder:mainMenu', {'template': 'webCSAdminBundle::knp_menu.html.twig'}) }}
 				</li>
 				
 			</ul> <!-- End #main-nav -->

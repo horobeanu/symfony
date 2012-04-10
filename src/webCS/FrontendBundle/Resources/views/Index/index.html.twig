@@ -1,1 +1,42 @@
-Home
+{% extends "webCSFrontendBundle::layout.html.twig" %}
+
+{% block bodyClass %}homepage{% endblock%}
+{% block title %}webCS{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript"
+    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBHyF6ksPlfWpEmKBBNjWVkFjV3vT0RJU8&sensor=false">
+</script>
+<script type="text/javascript">
+    function initialize() {
+        var myOptions = {
+            'center': new google.maps.LatLng({{ geo.latitude|default('44.437710') }}, {{ geo.longitude|default('26.097366') }} ),
+            'zoom': 15,
+            'mapTypeId': google.maps.MapTypeId.ROADMAP,
+            
+            'disableDefaultUI': true,
+            'streetViewControl': true,
+            'navigationControl': true,
+            'navigationControlOptions': {style: google.maps.NavigationControlStyle.DEFAULT},
+            'scrollwheel': true,
+            'mapTypeControl': true,
+            'mapTypeControlOptions': {style: google.maps.MapTypeControlStyle.DEFAULT, position: google.maps.ControlPosition.TOP_RIGHT},
+            'mapTypeId': google.maps.MapTypeId.ROADMAP,
+            'styles': [{featureType: 'poi', stylers: [{ visibility: 'off'}]}, {featureType: 'poi.park', stylers: [{ visibility: 'on'}]}, {featureType: 'poi.medical', stylers: [{ visibility: 'on'}]}, {featureType: 'poi.attraction', stylers: [{ visibility: 'on'}]}]
+        };
+        var map = new google.maps.Map(document.getElementById('map_canvas'),
+            myOptions);
+    }
+    $(document).ready(function() {
+        initialize();
+    });
+</script>
+{% endblock %}
+                    
+{% block content %}
+<div class="wrapper">
+	<div id="content">
+		<div id="map_canvas"></div>
+	</div>
+</div>
+{% endblock %}

@@ -20,6 +20,9 @@ class AppKernel extends Kernel
             new webCS\AdminBundle\webCSAdminBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new webCS\FrontendBundle\webCSFrontendBundle(),
+            new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
