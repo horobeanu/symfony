@@ -1,0 +1,7 @@
+parameters:
+#    web_cs_admin.example.class: webCS\AdminBundle\Example
+
+services:
+#    web_cs_admin.example:
+#        class: %web_cs_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

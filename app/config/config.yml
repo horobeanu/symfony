@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
@@ -20,6 +20,9 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    cache: false
+    globals:
+       MAX_PAGE_ROWS: %MAX_PAGE_ROWS%
 
 # Assetic Configuration
 assetic:
@@ -58,3 +61,17 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+
+sensio_framework_extra:
+    router:  { annotations: true }
+    request: { converters: true }
+    view:    { annotations: true }
+    cache:   { annotations: true }
+
+parameters:
+    MAX_PAGE_ROWS:  "20"
+    
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: webCS\AdminBundle\Entity\User
